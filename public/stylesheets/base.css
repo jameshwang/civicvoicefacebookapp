@@ -101,6 +101,10 @@ header .tagline {
   float: left;
 }
 
+div#petition_names ul li {
+  margin-bottom: 10px;
+}
+
 
 /* =buttons
 --------------------------------------------- */
