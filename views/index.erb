@@ -127,6 +127,8 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
 
+    <!-- If the user is logged in, then post picture, welcome them, and then allow them -->
+    <!-- to share via the wall, messages and requests. ELSE put a login button -->
     <header class="clearfix">
       <% if @user %>
           <p id="picture" style="background-image: url(https://graph.facebook.com/<%= @user['id'] %>/picture?type=normal)"></p>
@@ -168,42 +170,11 @@
       <% end %>
     </header>
 
-    <section id="get-started">
-      <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
-      <a href="https://devcenter.heroku.com/articles/facebook?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="button">Learn How to Edit This App</a>
-    </section>
-
-
+    <!-- Used if the user is logged in -->
+    <!-- TODO - Add the list of petition here.  How do we get the list from the other server? -->
     <% if @user %>
     <section id="samples" class="clearfix">
           <h1>Examples of the Facebook Graph API</h1>
-
-          <div class="list">
-            <h3>A few of your friends</h3>
-            <ul class="friends">
-              <% @friends.each do |friend| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend['id']%>')">
-                    <img src="https://graph.facebook.com/<%= friend['id'] %>/picture?type=square" alt="<%= friend['name'] %>">
-                    <%= friend['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="list inline">
-            <h3>Recent photos</h3>
-            <ul class="photos">
-              <% @photos.each_with_index do |photo, index| %>
-                <li style="background-image: url(<%= photo['picture'] %>)" class='<%= 'first-column' if (index%4).zero? %>'>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= photo['id'] %>')">
-                    <%= photo['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
 
           <div class="list">
             <h3>Things you like</h3>
