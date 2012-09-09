@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Ajax Test</title>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+		<script type="text/javascript" src="javascripts/handlebars.js"></script>
+		<script type="text/text/x-handlebars-template" id="list_petitions">
+		  <div id="petition_names">
+		    <ol>
+		      {{#each petitions}}
+		      <li>{{name}}</li>
+		      {{/each}}
+		    </ol>
+		  </div>
+		</script>
+		<script type="text/javascript">
+			$(function () {
+				var petition_url = "https://easypetition.herokuapp.com/petitions.json?callback=?";
+				$.getJSON(petition_url, function (data) {
+					var json_data = { petitions: data },
+				  		source = $('#list_petitions').html(),
+				  		template = Handlebars.compile(source);
+
+				  	
+				  	$('#stream').append(template(json_data));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="stream"></div>
+	</body>
+</html>	
