@@ -121,8 +121,8 @@
                 method: 'feed',
                 link: $(this).attr('data-url'),
                 name: "I just signed the " + $(this).prev().text() + " petition",
-                caption: "",
-                description: ""
+                caption: "I just signed this petition",
+                description: $(this).prev().text()
             });
           });
         });
