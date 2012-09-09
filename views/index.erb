@@ -29,20 +29,22 @@
     <script type="text/javascript" src="/javascripts/handlebars.js"></script>
 
     <script type="text/text/x-handlebars-template" id="list_petitions">
-      <div id="petition_names">
-        <ul>
+      <table id="petition_names">
+        <tr>
           {{#each petitions}}
-          <li style="padding-bottom: 20px;">
-            <a href="#" class="facebook-button postWall" data-url="<%= url %>">
+          <tr style="padding-bottom: 20px;">
+            <td><a href="#" class="facebook-button postWall" data-url="<%= url %>">
               <span class="plus">Post to Wall</span>
             </a>
-            <a href="https://easypetition.herokuapp.com/petitions/{{id}}">
+            </td>
+            <td><a href="https://easypetition.herokuapp.com/petitions/{{id}}">
               <span>{{name}}</span>
             </a>
-          </li>
+            </td>
+          </tr>
           {{/each}}
-        </ul>
-      </div>
+        </tr>
+      </table>
     </script>
 
 
