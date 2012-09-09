@@ -84,6 +84,17 @@
           
           console.log($('#name').text());
         });
+
+        var petition_url = "http://easypetition.herokuapp.com/petitions.json?callback=?";
+        $.getJSON(petition_url, function (data) {
+
+          $.each(data, function (index, value) {
+
+            $('<p />', {
+              text: value.name
+            }).appendTo($('div#stream'));
+          });
+        });
       });
     </script>
 
@@ -180,65 +191,38 @@
     <!-- TODO - Add the list of petition here.  How do we get the list from the other server? -->
     <% if @user %>
     <section id="samples" class="clearfix">
-          <h1>Examples of the Facebook Graph API</h1>
+      <h1>Examples of the Facebook Graph API</h1>
 
-          <div class="list">
-            <h3>Things you like</h3>
-            <ul class="things">
-              <% @likes.each do |like| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= like['id'] %>')">
-                    <img src="https://graph.facebook.com/<%= like['id'] %>/picture?type=square" alt="<%= like['name'] %>">
-                    <%= like['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
+      <div class="list">
+        <h3>Things you like</h3>
+        <ul class="things">
+          <% @likes.each do |like| %>
+            <li>
+              <a href="#" onclick="window.open('http://www.facebook.com/<%= like['id'] %>')">
+                <img src="https://graph.facebook.com/<%= like['id'] %>/picture?type=square" alt="<%= like['name'] %>">
+                <%= like['name'] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-          <div class="list">
-            <h3>Friends using this app</h3>
-            <ul class="friends">
-              <% @friends_using_app.each do |friend_result| %>
-                <li>
-                  <a href="#" onclick="window.open('http://www.facebook.com/<%= friend_result['uid'] %>')">
-                    <img src="<%= friend_result['pic_square'] %>" alt="<%= friend_result['name'] %>">
-                    <%= friend_result['name'] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </section>
+      <div class="list">
+        <h3>Friends using this app</h3>
+        <ul class="friends">
+          <% @friends_using_app.each do |friend_result| %>
+            <li>
+              <a href="#" onclick="window.open('http://www.facebook.com/<%= friend_result['uid'] %>')">
+                <img src="<%= friend_result['pic_square'] %>" alt="<%= friend_result['name'] %>">
+                <%= friend_result['name'] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </section>
     <% end %>
 
-
-    <section id="guides" class="clearfix">
-      <h1>Learn More About Heroku &amp; Facebook Apps</h1>
-      <ul>
-        <li>
-          <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top" class="icon heroku">Heroku</a>
-          <p>Learn more about <a href="https://www.heroku.com/?utm_source=facebook&utm_medium=app&utm_campaign=fb_integration" target="_top">Heroku</a>, or read developer docs in the Heroku <a href="https://devcenter.heroku.com/" target="_top">Dev Center</a>.</p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/web/" target="_top" class="icon websites">Websites</a>
-          <p>
-            Drive growth and engagement on your site with
-            Facebook Login and Social Plugins.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/mobile/" target="_top" class="icon mobile-apps">Mobile Apps</a>
-          <p>
-            Integrate with our core experience by building apps
-            that operate within Facebook.
-          </p>
-        </li>
-        <li>
-          <a href="https://developers.facebook.com/docs/guides/canvas/" target="_top" class="icon apps-on-facebook">Apps on Facebook</a>
-          <p>Let users find and connect to their friends in mobile apps and games.</p>
-        </li>
-      </ul>
-    </section>
+    <div id="stream"></div>
   </body>
 </html>
