@@ -34,9 +34,11 @@
           {{#each petitions}}
           <li style="padding-bottom: 20px;">
             <a href="#" class="facebook-button postWall" data-url="<%= url %>">
-              <span>Post to Wall</span>
+              <span class="plus">Post to Wall</span>
             </a>
-            <span>{{name}}</span>
+            <a href="https://easypetition.herokuapp.com/petitions/{{id}}">
+              <span>{{name}}</span>
+            </a>
           </li>
           {{/each}}
         </ul>
@@ -87,7 +89,7 @@
         });
 
         $('#sendRequest').click(function() {
-          /*
+          
           FB.ui(
             {
               method  : 'apprequests',
@@ -100,9 +102,6 @@
               }
             }
           );
-          */
-
-          console.log($('#name').text());
         });
 
         var petition_url = "https://easypetition.herokuapp.com/petitions.json?callback=?";
