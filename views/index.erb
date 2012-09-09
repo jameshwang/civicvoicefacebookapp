@@ -52,7 +52,10 @@
           FB.ui(
             {
               method : 'feed',
-              link   : $(this).attr('data-url')
+              link   : $(this).attr('data-url'),
+              name: 'This is the name',
+              caption: 'This is the caption',
+              description: 'This is desc'
             },
             function (response) {
               // If response is null the user canceled the dialog
