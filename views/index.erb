@@ -26,6 +26,18 @@
     <meta property="fb:app_id" content="<%= @app['name'] %>" />
 
     <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/handlebars.js"></script>
+
+    <script type="text/text/x-handlebars-template" id="list_petitions">
+      <div id="petition_names">
+        <ol>
+          {{#each petitions}}
+          <li>{{name}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </script>
+
 
     <script type="text/javascript">
       function logResponse(response) {
@@ -87,13 +99,11 @@
 
         var petition_url = "https://easypetition.herokuapp.com/petitions.json?callback=?";
         $.getJSON(petition_url, function (data) {
+          var json_data = { petitions: data },
+              source = $('#list_petitions').html(),
+              template = Handlebars.compile(source);
 
-          $.each(data, function (index, value) {
-
-            $('<p />', {
-              text: value.name
-            }).appendTo($('div#stream'));
-          });
+            $('#stream').append(template(json_data));
         });
       });
     </script>
