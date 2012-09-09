@@ -32,10 +32,11 @@
       <div id="petition_names">
         <ul>
           {{#each petitions}}
-          <li><span>{{name}}</span>
+          <li>
             <a href="#" class="facebook-button postWall" data-url="<%= url %>">
               <span class="plus">Post to Wall</span>
             </a>
+            <span>{{name}}</span>
           </li>
           {{/each}}
         </ul>
@@ -118,7 +119,7 @@
               {
                 method: 'feed',
                 link: "https://apps.facebook.com/civicvoice",
-                name: "I just signed the " + $(this).prev().text() + " petition",
+                name: "I just signed the " + $(this).next().text() + " petition",
                 caption: "I just signed this petition",
                 description: $(this).prev().text()
             });
