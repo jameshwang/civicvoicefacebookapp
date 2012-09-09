@@ -33,12 +33,14 @@
         <ul>
           {{#each petitions}}
           <li>
+            <dt>
             <a href="#" class="facebook-button postWall" data-url="<%= url %>">
               <span class="plus">Post to Wall</span>
-            </a>
+            </a></dt>
+            <dl>
             <a href="https://easypetition.herokuapp.com/petitions/{{id}}">
               <span>{{name}}</span>
-            </a>
+            </a></dl>
           </li>
           {{/each}}
         </ul>
