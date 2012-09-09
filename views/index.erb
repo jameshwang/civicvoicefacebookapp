@@ -32,7 +32,11 @@
       <div id="petition_names">
         <ul>
           {{#each petitions}}
-          <li>{{name}}</li>
+          <li>{{name}}
+            <a href="#" class="facebook-button postWall" data-url="<%= url %>">
+              <span class="plus">Post to Wall</span>
+            </a>
+          </li>
           {{/each}}
         </ul>
       </div>
@@ -47,6 +51,17 @@
       }
 
       $(function(){
+        // Set up clicks for signed petitions
+        // $('.postWall').click(function () {
+        //   FB.ui(
+        //     {
+        //       method: 'feed',
+        //       link: $(this).attr('data-url'),
+        //       name: "I just signed the " + $(this)
+        //     }
+        //     );
+        // });
+
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
           FB.ui(
