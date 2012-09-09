@@ -97,8 +97,8 @@ header .tagline {
   padding: 24px 18px;
 }
 
-tr td a span {
-  padding-left: 20px;
+.postWall {
+  float: left;
 }
 
 
