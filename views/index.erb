@@ -51,8 +51,6 @@
       }
 
       $(function(){
-        
-
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
           FB.ui(
@@ -119,7 +117,7 @@
             FB.ui(
               {
                 method: 'feed',
-                link: $(this).attr('data-url'),
+                link: "https://apps.facebook.com/civicvoice",
                 name: "I just signed the " + $(this).prev().text() + " petition",
                 caption: "I just signed this petition",
                 description: $(this).prev().text()
