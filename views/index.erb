@@ -67,6 +67,7 @@
         });
 
         $('#sendRequest').click(function() {
+          /*
           FB.ui(
             {
               method  : 'apprequests',
@@ -79,6 +80,9 @@
               }
             }
           );
+          */
+          console.log("clicked me");
+          console.log($('strong#name').val());
         });
       });
     </script>
