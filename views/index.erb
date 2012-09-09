@@ -85,7 +85,7 @@
           console.log($('#name').text());
         });
 
-        var petition_url = "http://easypetition.herokuapp.com/petitions.json?callback=?";
+        var petition_url = "https://easypetition.herokuapp.com/petitions.json?callback=?";
         $.getJSON(petition_url, function (data) {
 
           $.each(data, function (index, value) {
