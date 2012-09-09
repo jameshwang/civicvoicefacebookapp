@@ -51,23 +51,7 @@
       }
 
       $(function(){
-        // Set up clicks for signed petitions
-        $('.postWall').click(function () {
-          FB.ui(
-            {
-              method: 'feed',
-              link: $(this).attr('data-url'),
-              name: "I just signed the " + $(this).prev().text() + " petition"
-
-            },
-            function (response) {
-              if (response != null) {
-                logResponse(respose);
-              }
-            }
-          );
-          console.log("postWall was clicked");
-        });
+        
 
         // Set up so we handle click on the buttons
         $('#postToWall').click(function() {
@@ -128,7 +112,19 @@
               source = $('#list_petitions').html(),
               template = Handlebars.compile(source);
 
-            $('#stream').append(template(json_data));
+          $('#stream').append(template(json_data));
+
+          // Set up clicks for signed petitions
+          $('a.postWall').click(function () {
+            FB.ui(
+              {
+                method: 'feed',
+                link: $(this).attr('data-url'),
+                name: "I just signed the " + $(this).prev().text() + " petition",
+                caption: "",
+                description: ""
+            });
+          });
         });
       });
     </script>
